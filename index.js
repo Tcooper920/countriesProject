@@ -19,7 +19,7 @@ function countryAjaxCall () {
 
 function displayCountryData(countries) {
 	for (let i = 0; i < countries.length; i++) {
-		if (countries[i].name == inputCountry.value) {
+		if (countries[i].name.toLowerCase() == inputCountry.value.toLowerCase()) {
 			$("#country-name").html("Name of the country: " + countries[0].name);
 			$("#capital").html("Capital: " + countries[i].capital);
 			$("#population").html("Population: " + countries[i].population);
