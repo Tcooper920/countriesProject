@@ -13,6 +13,8 @@ function countryAjaxCall () {
 		success: function(response) {
 			displayCountryData(response);
 			translateFrench(response);
+			translateSpanish(response);
+			translateJapanese(response);
 			// console.log(response)
 		}
 	})
@@ -50,7 +52,23 @@ function translateFrench(countries) {
 	let frenchButton = document.getElementById("French");
 
 	frenchButton.addEventListener("click", function () {
-		console.log(countries[0].translations.fr);
+		$("#translateCountry").html(countries[0].translations.fr)
+	});
+}
+
+function translateSpanish(countries) {
+	let spanishButton = document.getElementById("Spanish");
+
+	spanishButton.addEventListener("click", function () {
+		$("#translateCountry").html(countries[0].translations.es)
+	});
+}
+
+function translateJapanese(countries) {
+	let japaneseButton = document.getElementById("Japanese");
+
+	japaneseButton.addEventListener("click", function () {
+		$("#translateCountry").html(countries[0].translations.ja)
 	});
 }
 
