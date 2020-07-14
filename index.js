@@ -72,5 +72,15 @@ function translateJapanese(countries) {
 	});
 }
 
+/* GDP *******************************/
+
+$.ajax({
+		url: "https://raw.githubusercontent.com/OggiDanailov/gdp-data/master/data.json",
+		success: function(result) {
+			console.log(result);
+		}
+	})
+
+
 
 });
