@@ -74,13 +74,23 @@ function translateJapanese(countries) {
 
 /* GDP *******************************/
 
-$.ajax({
+	$.ajax({
 		url: "https://raw.githubusercontent.com/OggiDanailov/gdp-data/master/data.json",
-		success: function(result) {
-			console.log(result);
+		success: function(gdpResult) {
+			console.log(gdpResult);
+			var gdpJson = JSON.parse(gdpResult);
+			getGDP(gdpJson);
 		}
-	})
+	});
 
+/* click button and then find GDP for current country and print to screen */
+	
+	let gdpButton = document.getElementById("gdp");
 
+	function getGDP(gdpJson) {
+		gdpButton.addEventListener("click", function () {
+			alert(gdpJson);
+		});
+	}
 
 });
