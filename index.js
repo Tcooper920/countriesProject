@@ -15,6 +15,7 @@ $(document).ready(function (){
 
 let submit = document.getElementById("submit-country");
 let inputCountry = document.getElementById("country");
+let currentCountry;
 
 
 submit.addEventListener("click", countryAjaxCall)
@@ -34,23 +35,30 @@ function countryAjaxCall () {
 	})
 }
 
+/* format numbers with commas */
+function formatNumber(num) {
+	var str = num.toString().split('.');
+    
+    if (str[0].length >= 5) {
+    	str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+
+    return str.join('.');
+}
+
+/* print country info */
 function displayCountryData(countries) {
 	for (let i = 0; i < countries.length; i++) {
 		if (countries[i].name.toLowerCase() == inputCountry.value.toLowerCase()) {
 			$("#country-name").html("Name of the country: " + countries[0].name);
 			$("#capital").html("Capital: " + countries[i].capital);
-	
+
+			currentCountry = countries[0].name; /* this will be used in another function */
+
 			let currentPopulation = countries[i].population;
 
-			function formatNumber(num) {
-				var str = num.toString().split('.');
-    			if (str[0].length >= 5) {
-       				str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-    			}
-    			$("#population").html("Population: " + str.join('.'));
-			}
-
-			formatNumber (currentPopulation);
+			$("#population").html("Population: " + formatNumber (currentPopulation));
+			
 
 
 			$("#timezones").html("Timezones: " + countries[i].timezones);
@@ -64,9 +72,7 @@ function displayCountryData(countries) {
 }
 
 
-
-});
-
+/* translate country buttons */
 function translateFrench(countries) {
 	let frenchButton = document.getElementById("French");
 
@@ -96,21 +102,38 @@ function translateJapanese(countries) {
 	$.ajax({
 		url: "https://raw.githubusercontent.com/OggiDanailov/gdp-data/master/data.json",
 		success: function(gdpResult) {
-			console.log(gdpResult);
+			// console.log(gdpResult);
 			var gdpJson = JSON.parse(gdpResult);
 			getGDP(gdpJson);
 		}
 	});
 
-/* click button and then find GDP for current country and print to screen */
+/* click button and then find GDP for current country and print to screen (use bracket notation) */
 	
 	let gdpButton = document.getElementById("gdp");
 
 	function getGDP(gdpJson) {
 		gdpButton.addEventListener("click", function () {
-			alert(gdpJson);
+			// alert(gdpJson[1]["Country Name"]);
+			
+			for (let i = 0; i < gdpJson.length; i++) {
+				if (gdpJson[i]["Country Name"] === currentCountry) {
+					$(gdpContainer).html(formatNumber(gdpJson[i][2017]));
+
+					/* plot graph for GDP results */
+					console.log(gdpJson[i]);
+					let TESTER = document.getElementById('gdp-graph');
+					Plotly.newPlot( TESTER, [{
+					x: [1, 2, 3, 4, 5],
+					y: [1, 2, 4, 8, 16] }], {
+					margin: { t: 0 } } );
+
+				}
+			}
+
 		});
 	}
 
+});
 
             
