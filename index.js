@@ -5,6 +5,8 @@ $(document).ready(function (){
 let submit = document.getElementById("submit-country");
 let inputCountry = document.getElementById("country");
 let currentCountry;
+var gdpValueArray = []
+var gdpKeyArray = []
 
 submit.addEventListener("click", countryAjaxCall)
 
@@ -102,14 +104,21 @@ function translateJapanese(countries) {
 			
 			for (let i = 0; i < gdpJson.length; i++) {
 				if (gdpJson[i]["Country Name"] === currentCountry) {
+					var values = Object.values(gdpJson[i])
+					var keys = Object.keys(gdpJson[i])
 					$(gdpContainer).html(formatNumber(gdpJson[i][2017]));
+					for (let i = 0; i < values.length; i++) {
+						if(values[i] !== "" && typeof values[i] === "number") {
+							gdpValueArray.push(values[i])
+							gdpKeyArray.push(keys[i])
+						}
+					}
 
-					/* plot graph for GDP results */
-					console.log(gdpJson[i]);
+
 					let TESTER = document.getElementById('gdp-graph');
 					Plotly.newPlot( TESTER, [{
-					x: [1, 2, 3, 4, 5],
-					y: [1, 2, 4, 8, 16] }], {
+					x: gdpKeyArray,
+					y: gdpValueArray }], {
 					margin: { t: 0 } } );
 
 				}
