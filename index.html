@@ -7,52 +7,55 @@
 </head>
 <body>
 
-<!-- country 1 -->
-<input type="text" id="country" value="United States of America">
-<input type="button" value="search" id="submit-country">
+<div class="wrapper">
+	<!-- country 1 -->
+	<div class="left-side">
+		<input type="text" id="country" value="United States of America">
+		<input type="button" value="search" id="submit-country">
 
-<div id="country-name"></div>
-<div id="capital"></div>
-<div id="population"></div>
-<div id="timezones"></div>
-<div id="flag"></div>
+		<div id="country-name"></div>
+		<div id="capital"></div>
+		<div id="population"></div>
+		<div id="timezones"></div>
+		<div id="flag"></div>
 
-<button id="French">French</button>
-<button id="Spanish">Spanish</button>
-<button id="Japanese">Japanese</button>
+		<button id="French">French</button>
+		<button id="Spanish">Spanish</button>
+		<button id="Japanese">Japanese</button>
 
-<div id="translateCountry"></div>
+		<div id="translateCountry"></div>
 
-<button id="gdp">GDP</button>
+		<button id="gdp">GDP</button>
 
-<div id="gdpContainer"></div>
+		<div id="gdpContainer"></div>
 
-<div id="gdp-graph" style="width:600px;height:250px;"></div> <!-- plot graph here -->
+		<div id="gdp-graph" style="width:600px;height:250px;"></div> <!-- plot graph here -->
+	</div>
 
-<hr>
+	<!-- country 2 -->
+	<div class="right-side">
+		<input type="text" id="country-2" value="United States of America">
+		<input type="button" value="search" id="submit-country-2">
 
-<!-- country 2 -->
+		<div id="country-name-2"></div>
+		<div id="capital-2"></div>
+		<div id="population-2"></div>
+		<div id="timezones-2"></div>
+		<div id="flag-2"></div>
 
-<input type="text" id="country-2" value="United States of America">
-<input type="button" value="search-2" id="submit-country-2">
+		<button id="French-2">French</button>
+		<button id="Spanish-2">Spanish</button>
+		<button id="Japanese-2">Japanese</button>
 
-<div id="country-name-2"></div>
-<div id="capital-2"></div>
-<div id="population-2"></div>
-<div id="timezones-2"></div>
-<div id="flag-2"></div>
+		<div id="translateCountry-2"></div>
 
-<button id="French-2">French</button>
-<button id="Spanish-2">Spanish</button>
-<button id="Japanese-2">Japanese</button>
+		<button id="gdp-2">GDP</button>
 
-<div id="translateCountry-2"></div>
+		<div id="gdpContainer-2"></div>
 
-<button id="gdp-2">GDP</button>
-
-<div id="gdpContainer-2"></div>
-
-<div id="gdp-graph-2" style="width:600px;height:250px;"></div> <!-- plot graph here -->
+		<div id="gdp-graph-2" style="width:600px;height:250px;"></div> <!-- plot graph here -->
+	</div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- JQuery -->
 <script type="text/javascript" src="index.js"></script>
