@@ -1,0 +1,14 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.left-side, .right-side {
+	border: 1px solid grey;
+}
+
+@media screen and (max-width: 700px) {
+	.wrapper {
+		grid-template-columns: 1fr;
+	}
+}

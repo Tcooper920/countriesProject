@@ -100,7 +100,6 @@ function translateJapanese(countries) {
 
 	function getGDP(gdpJson) {
 		gdpButton.addEventListener("click", function () {
-			// alert(gdpJson[1]["Country Name"]);
 			
 			for (let i = 0; i < gdpJson.length; i++) {
 				if (gdpJson[i]["Country Name"] === currentCountry) {
@@ -113,7 +112,6 @@ function translateJapanese(countries) {
 							gdpKeyArray.push(keys[i])
 						}
 					}
-
 
 					let TESTER = document.getElementById('gdp-graph');
 					Plotly.newPlot( TESTER, [{
